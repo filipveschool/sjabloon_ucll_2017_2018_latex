@@ -254,10 +254,10 @@
 
 \newcommand{\thesubject}{\@title}
 	
-\define@key{kulemt}{docent}{%
-  \def\@tempa{#1}\ifx\@tempa\@empty\else \def\kulemt@docent{#1}\fi}
-\let\KV@kulemt@docent\KV@kulemt@docent
-\def\kulemt@docent{\kulemt@error{No promoter given}}
+\define@key{kulemt}{teacher}{%
+  \def\@tempa{#1}\ifx\@tempa\@empty\else \def\kulemt@teacher{#1}\fi}
+\let\KV@kulemt@teacher\KV@kulemt@teacher
+\def\kulemt@teacher{\kulemt@error{No teacher given}}
 
 \define@key{kulemt}{assessor}{\def\kulemt@assessor{#1}}
 \def\kulemt@assessor{\kulemt@error{No assessor given}}
@@ -384,7 +384,7 @@
 
 \def\kulemt@paa@#1{%
   \ifcase #1%
-    Docent\kulemt@ifand\kulemt@docent{\kulemt@ifdutch{en}{ers}}{}%
+    Teacher\kulemt@ifand\kulemt@teacher{\kulemt@ifdutch{en}{ers}}{}%
   \or
   	Assessor\kulemt@ifand\kulemt@assessor{\kulemt@ifdutch{en}s}{}%
   \or
@@ -798,7 +798,7 @@
   \begingroup
     \ifcase #1\relax
 	  % Dit haalt de data uit de setup gegevens
-      \let\@tempa\kulemt@docent
+      \let\@tempa\kulemt@teacher
     \or
     	\let\@tempa\kulemt@assessor
     \or
@@ -880,7 +880,7 @@
 		%origineel
 		%\kulemt@master@text \par
          \kulemt@master@textthree \par	
-		% Dit toont de docent/stagebegeleider gegevens
+		% Dit toont de teacher/stagebegeleider gegevens
         \kulemt@paa@fp0%
         % stagementor
        %\kulemt@paa@fp1%
@@ -1008,7 +1008,7 @@
 				
 				
 				\kulemt@master@text \par		
-				% Dit toont de docent/stagebegeleider gegevens
+				% Dit toont de teacher/stagebegeleider gegevens
 				\kulemt@paa@fp0%
 				% stagementor
 				%\kulemt@paa@fp1%
@@ -1178,7 +1178,7 @@
     \begingroup \raggedright
       \noindent \kulemt@master@text \par
     \endgroup
-    \@hangfrom{\textit{\kulemt@paa@0}: }\kulemt@docent\par
+    \@hangfrom{\textit{\kulemt@paa@0}: }\kulemt@teacher\par
 %    \@hangfrom{\textit{\kulemt@paa@1}: }\kulemt@assessor\par
     %\@hangfrom{\textit{\kulemt@paa@2}: }\kulemt@assistant\par
 	\@hangfrom{\textit{\kulemt@paa@3}: }\kulemt@company\par
