@@ -338,25 +338,21 @@ intoc] % voegt de indexpagina aan de inhoudsopgave toe
 %\printbibliography[heading=subbibintoc,type=online,title={Sites only}]
 %\todo[inline]{Gebruikte bronnen en sites nog als bibliografie toevoegen achteraan.}
 
-\chapter{Glossaries}
-
-%\import{./}{importglossariesvolledig.tex}
+%\chapter{Glossaries}
 
 %\glsaddall
 %\printglossaries
 
-%\setglossarystyle{altlisthypergroup}
+\setglossarystyle{altlisthypergroup}
 
-%\printglossary[title=Termen,toctitle=Lijst van termen]
+\printglossary[title=Termen,toctitle=Lijst van termen]
 
 %\clearpage
 
-%\setglossarystyle{mcolindex}
+\setglossarystyle{mcolindex}
 
 \printglossary[type=\acronymtype]
-
-\printglossary
-%\printglossaries
+%\printglossary[type=\acronymtype,title=Abbreviations]
 
 \chapter{Index}
 
