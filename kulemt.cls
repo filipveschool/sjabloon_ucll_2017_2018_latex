@@ -571,27 +571,27 @@
  	\scshape\leftmark
  	\fi}
 
-% \makeevenfoot{ruled}{Pagina \thepage \hspace{1pt} van \thelastpage}{}{Filip Vanden Eynde~\copyright~2016}
-% \makeoddfoot{ruled}{Filip Vanden Eynde~\copyright~2016}{}{Pagina \thepage \hspace{1pt} van \thelastpage}
-
+%Dit is voor op de even pagina's in de footer dus vb. 2,4,8,16 enz.
 \makeevenfoot{ruled}{%
+%left
  	\if@mainmatter
  	Pagina \thepage \hspace{1pt} van \thelastpage
 	 \else
 	\thepage
 	\fi}
+%center
 {}
+%right
 {%
 	\if@mainmatter
-	%Filip Vanden Eynde~\copyright~2017
+	Filip Vanden Eynde~\copyright~2017
 	\else
 	\fi
 }
 
-%\makeoddfoot{hstylei}{hlefti}{hcenteri}{hrighti}
 \makeoddfoot{ruled}{%
 	\if@mainmatter
-	%Filip Vanden Eynde~\copyright~2017
+		Filip Vanden Eynde~\copyright~2017
 	\else
 	\fi}
 {}
@@ -601,9 +601,10 @@
 	Pagina \thepage \hspace{1pt} van \thelastpage
 	\else
     \thepage
-  	%Pagina \thepage \hspace{1pt} van \thelastpage
 	\fi
 }
+
+%\makefootrule{ruled}{\textwidth}{0.5pt}{0pt}
 
 \pagestyle{ruled}
 
@@ -611,8 +612,16 @@
 \makefootrule{ruledfilip}{\textwidth}{0.5pt}{0pt}
 
 \makepagestyle{nohead}
+%originele footer values
+%\makeevenfoot{nohead}{\thepage}{}{}
+%\makeoddfoot{nohead}{}{}{\thepage}
+
+%\makeevenfoot{nohead}{\thepage even nohead left}{even nohead center}{even nohead right}
+%\makeoddfoot{nohead}{odd nohead left}{odd nohead center}{\thepage odd nohead right}
 \makeevenfoot{nohead}{\thepage}{}{}
 \makeoddfoot{nohead}{}{}{\thepage}
+%\makefootrule{nohead}{\textwidth}{0.5pt}{0pt}
+
 \aliaspagestyle{chapter}{nohead}
 \maxsecnumdepth{subsection}
 \maxtocdepth{section}
@@ -620,7 +629,12 @@
 \def\lofheadstart{\clearforchapter\chapterheadstart}
 \def\lotheadstart{\clearforchapter\chapterheadstart}
 
+%Styling voor elke eerste pagina van een nieuw hoofdstuk.
+% Om er voor te zorgen dat de footer begint met de vorm "Pagina 1 van 22" bijvoorbeeld.
 \makepagestyle{chapternohead}
+
+\makefootrule{chapternohead}{\textwidth}{0.5pt}{0pt}
+
  \makeevenfoot{chapternohead}{%
 	\if@mainmatter
 	Pagina \thepage \hspace{1pt} van \thelastpage
@@ -636,9 +650,10 @@
 	\fi
 }
 
+%komt op de 1ste pagina van elk nieuw hoofdstuk en oneven pagina's
 \makeoddfoot{chapternohead}{%
 	\if@mainmatter
-	%Filip Vanden Eynde~\copyright~2017
+	Filip Vanden Eynde~\copyright~2017
 	\else
 	\fi}
 {}
@@ -651,14 +666,7 @@
 	\fi
 }
 
-\makefootrule{chapternohead}{\textwidth}{0.5pt}{0pt}
-
-\makepagestyle{filip}
-\makeevenfoot{filip}{Pagina \thepage \hspace{1pt} van \thelastpage}{}{Filip Vanden Eynde~\copyright~2017}
-\makeoddfoot{filip}{Filip Vanden Eynde~\copyright~2017}{}{Pagina \thepage \hspace{1pt} van \thelastpage}
-%\makeheadrule{filip}{width}{thickness} %To add lines for the header
-\makefootrule{filip}{\textwidth}{\normalrulethickness}{} %To add lines to the footer
-%\normalrulethickness
+%\makefootrule{chapternohead}{\textwidth}{0.5pt}{0pt}
 
 \makepagestyle{afterbackmatter}
  \makeevenfoot{afterbackmatter}{%
@@ -677,7 +685,7 @@
 \makefootrule{afterbackmatter}{\textwidth}{0.5pt}{0pt}
 
 
-
+%wordt gebruikt voor normale nummering terug vanaf bibliografie
 \makepagestyle{afterbackmatterf}
 \makeevenfoot{afterbackmatterf}{%
  % OK
@@ -768,9 +776,8 @@
 		\fi}%
 	\fi}
 
-\def\kulemt@master@textthree{
-	\kulemt@textsubject
-	
+\def\kulemt@master@textthree{%
+\kulemt@textsubject	
 }
   
 %---------------------------------------------------------------------------------------------------

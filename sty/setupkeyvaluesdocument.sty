@@ -60,10 +60,10 @@
 \define@key{kulemt}{textsubject}{\def\kulemt@textsubject{#1}}
 \def\kulemt@textsubject{\kulemt@error{No textsubject given}}
 
-%s\define@key{kulemt}{keywordspdf}{\def\kulemt@keywordspdf{#1}}
-%\def\kulemt@keywordspdf{}
+\define@key{kulemt}{keywordspdf}{\def\kulemt@keywordspdf{#1}}
+\def\kulemt@keywordspdf{\kulemt@error{No keywords given}}
 
-%\newcommand{\thepdfkeywords}{\kulemt@keywordspdf}
+\newcommand{\thekeywordspdf}{\kulemt@keywordspdf}
 
 
 \endinput

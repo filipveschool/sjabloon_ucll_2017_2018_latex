@@ -13,15 +13,10 @@
   company={Otago Polytechnic},
   location={Dunedin, Nieuw-Zeeland},
   textsubject={Eindwerk voorgedragen tot het behalen van mijn eindcijfer voor het vak Beleggen anders bekeken voor het diploma},
-  assistant={Filip Assistent}
+  assistant={Filip Assistent},
+  keywordspdf={Stageverslag, Dunedin, Nieuw-Zeeland, UCLL, schooljaar 2016-2017, Filip Vanden Eynde}
   }
   
-\newcommand{\stagebegeleider}{Griet Barrezeele}
-\newcommand{\stagementoreen}{Torleif West}
-\newcommand{\stagementortwee}{Siau-juin Lim}
-\newcommand{\stagebedrijf}{Otago Polytechnic}
-\newcommand{\stagelocatie}{Dunedin, Nieuw-Zeeland}
-\newcommand{\exactadresofinternshiplocation}{Forth Street, Private Bag 1910, Dunedin, 9054, New Zealand}
 \newcommand{\quotes}[1]{``#1''}
   
 % De volgende \setup mag verwijderd worden als geen fiche gewenst is.
@@ -38,8 +33,6 @@
 %\setup{coverpageonly}
 %\write18{pdflatex masterproefcoverpage -aux-directory=outputfoldercoverpage}
 %\write18{pdflatex masterproefcoverpage}
-
-\newcommand{\kleurlinkstableofcontents}{blue}
 
 % Kies de fonts voor de gewone tekst, bv. Latin Modern
 %\setup{font=palatino}
@@ -64,10 +57,6 @@
 \usepackage[table,dvipsnames]{xcolor}
 \usepackage{subcaption}
 
-%\usepackage{geometry}
-%\usepackage{pdflscape}
-
-
 
 %\begin{comment}
 
@@ -85,25 +74,9 @@ citestyle=numeric,
 sorting=nty,
 sortcites, % Dit zorgt ervoor dat als je meerdere referenties toont zoals [9,1] dat dit wordt getoond als [1,9] dus numeriek gesorteerd
 ]{biblatex}
-\addbibresource{referentiesstage.bib}
-
-%\defbibheading{subbibliography}{%
-%	\section*{References for Chapter \ref{refsection:
-%			,→ \therefsection}}}
-
+\addbibresource{referenties.bib}
 
 %\end{comment}
-
-
-
-% Dit stylet de bibliografie heading
-\begin{comment}
-
-
-\defbibheading{bibliography}[\bibname]{%
-	\section{#1}%
-	\markboth{#1}{#1}}
-\end{comment}
 
 
 %indexes
@@ -117,7 +90,6 @@ intoc] % voegt de indexpagina aan de inhoudsopgave toe
 \usepackage{import}
 \usepackage{enumitem}
 \usepackage{pdfpages}
-%\usepackage{todo}
 \usepackage{todonotes}
 
 %provides the multicols environment which typesets text into multiple columns.
@@ -134,30 +106,6 @@ intoc] % voegt de indexpagina aan de inhoudsopgave toe
 
 %------------------------------------------------------------------------
 
-% Define a set of colours for syntax highlighting
-
-\definecolor{MyColor1}{rgb}{0.2,0.4,0.6} %mix personal color
-\definecolor{azure(colorwheel)}{rgb}{0.0, 0.5, 1.0}
-\newcommand{\textb}{\color{Black} \usefont{OT1}{lmss}{m}{n}}
-\newcommand{\blue}{\color{MyColor1} \usefont{OT1}{lmss}{m}{n}}
-\newcommand{\blueb}{\color{MyColor1} \usefont{OT1}{lmss}{b}{n}}
-\definecolor{purpleexcel}{rgb}{0.4392156862745,0.18823529,0.62745098039}
-\definecolor{dkgreen}{rgb}{0,.6,0}%
-\definecolor{dkblue}{rgb}{0,0,.6}%
-\definecolor{dkyellow}{cmyk}{0,0,.8,.3}%
-\definecolor{lightgray}{rgb}{0.95, 0.95, 0.95}%
-\definecolor{darkgray}{rgb}{0.4, 0.4, 0.4}%
-\definecolor{editorGray}{rgb}{0.95, 0.95, 0.95}%
-\definecolor{editorOcher}{rgb}{1, 0.5, 0}%
-\definecolor{editorGreen}{rgb}{0, 0.5, 0}%
-\definecolor{orange}{rgb}{1,0.45,0.13}%
-\definecolor{olive}{rgb}{0.17,0.59,0.20}%
-\definecolor{brown}{rgb}{0.69,0.31,0.31}%
-\definecolor{purple}{rgb}{0.38,0.18,0.81}%
-\definecolor{lightblue}{rgb}{0.1,0.57,0.7}%
-\definecolor{lightred}{rgb}{1,0.4,0.5}%
-\definecolor{ChapBlue}{rgb}{0.00,0.65,0.65}
-
 %hier komen alle commando's en constante variabelen voor in de opdracht te gebruiken.
 
 \graphicspath{{images/}} % Set the default folder for images
@@ -168,9 +116,6 @@ intoc] % voegt de indexpagina aan de inhoudsopgave toe
 %\setlist[itemize,1]{leftmargin=*,topsep=0pt}
 %\setlist[enumerate,1]{leftmargin=*,topsep=0pt}
 \setlist{nosep}
-%\newcommand{\tabelgeometry}{%
-%\newgeometry{total={7.7in, 9.5in},top=0.7in,bottom=0.7in}
-%}
 
 \renewcommand\mempostaddapppagetotochook{\cftinserthook{toc}{BREAK}}
 \cftinsertcode{BREAK}{\changetocdepth{-10}}
@@ -189,26 +134,21 @@ intoc] % voegt de indexpagina aan de inhoudsopgave toe
 \makeatother
 
 
-%\chapterstyle{BlueBox}
-
 \ifthenelse {\boolean{pdfoutput}}
 	{
 	\usepackage[
 	%hidelinks = true,
-	%urlcolor=magenta,
-    pdfusetitle,colorlinks,urlcolor=blue,linkcolor=\kleurlinkstableofcontents,
-	plainpages=false,bookmarks=true,bookmarksnumbered,linktoc=all,pdffitwindow=true,
+    pdfusetitle, colorlinks, urlcolor=blue, linkcolor=blue,
+	plainpages=false ,bookmarks=true, bookmarksnumbered, linktoc=all, pdffitwindow=true,
 	pdftex,pdfauthor={\theauthor},pdftitle={\thetitle},pdfsubject={\thesubject},
-	pdfkeywords={\thekeywords},pdfproducer={\theauthor},pdfcreator={\theauthor}
+	pdfkeywords={\thekeywordspdf},pdfproducer={\theauthor},pdfcreator={\theauthor}
 	]{hyperref}	
 	}{
 
 \usepackage[
     pdfusetitle,
     colorlinks,
-    %urlcolor=blue,
     urlcolor=black,
-    %linkcolor=\kleurlinkstableofcontents,
     linkcolor=black,
     citecolor=black,
 	plainpages=false,
@@ -220,11 +160,10 @@ intoc] % voegt de indexpagina aan de inhoudsopgave toe
 	pdfauthor={\theauthor},
 	pdftitle={\thetitle},
 	pdfsubject={\thesubject},
-	pdfkeywords={\thekeywords},
+	pdfkeywords={\thekeywordspdf},
 	pdfproducer={\theauthor},
 	pdfcreator={\theauthor}
 	]{hyperref}	
-
 }
 
 %for plural forms of acronyms
@@ -242,8 +181,10 @@ intoc] % voegt de indexpagina aan de inhoudsopgave toe
 \usepackage[acronym, toc]{glossaries}
 \usepackage{glossary-mcols}
 \makeglossaries
-\import{./}{glossary.tex}
-\import{./}{acronyms.tex}
+\include{glossary}
+\include{acronyms}
+%\import{./}{glossary.tex}
+%\import{./}{acronyms.tex}
 %\import{glossary}
 
 
@@ -275,6 +216,15 @@ intoc] % voegt de indexpagina aan de inhoudsopgave toe
 
   \lipsum[1]
     \todo[inline]{Samenvatting schrijven}
+    
+%\acrfull{acl}
+    
+    \Gls{latex}
+    
+    \gls{maths}
+    
+    \acrfull{lcm}
+\acrlong{gcd}
 
 \end{abstract}
 
@@ -317,14 +267,19 @@ intoc] % voegt de indexpagina aan de inhoudsopgave toe
 \mainmatter
 
 %allemaal new stuff
-\clearforchapter
+%\clearforchapter
 
 %end allemaal new stuff
 
 %----------------------------------------
 
+%Dit betekent pak de pagestyle voor de eerste pagina als een nieuw hoofdstuk begint
+\aliaspagestyle{chapter}{chapternohead}
+%\pagestyle{chapternohead}
+\pagestyle{ruledfilip}
+
 %origineel
-%\include{inleiding}
+\include{inleiding}
 
 %\include{texfiles/inleiding/inleiding}
 %\import{texfiles/include-chapter1/}{chapter1.tex}
@@ -334,6 +289,9 @@ intoc] % voegt de indexpagina aan de inhoudsopgave toe
 % ... en zo verder tot
 \include{hfdst-n}
 \include{besluit}
+
+%---------
+\aliaspagestyle{chapter}{nohead}
 
 % Indien er bijlagen zijn:
 \appendixpage*          % indien gewenst
@@ -361,7 +319,7 @@ intoc] % voegt de indexpagina aan de inhoudsopgave toe
 %\bibliographystyle{abbrv}
 %\bibliography{referenties}
 
-\pagestyle{afterbackmatterf}
+%\pagestyle{afterbackmatterf}
 
 %\chapter{Bibliografie}
 
@@ -377,21 +335,28 @@ intoc] % voegt de indexpagina aan de inhoudsopgave toe
 \printbibliography[title={Referenties}]
 \pagestyle{afterbackmatterf}
 
-
 %\printbibliography[heading=subbibintoc,type=online,title={Sites only}]
 %\todo[inline]{Gebruikte bronnen en sites nog als bibliografie toevoegen achteraan.}
 
-%\printbibliography[heading=subbibintoc,type=article,title={Articles only}]
-%\printbibliography[heading=subbibintoc,type=book,title={Books only}]
-
-%op aparte pagina zo schrijven dan
-%\printbibliography[type=book,title={Books only}]
-%\printbibliography[keyword={physics},title={Physics-related only}]
-%\printbibliography[keyword={latex},title={\LaTeX-related only}]
-
 \chapter{Glossaries}
 
-\import{./}{importglossariesvolledig.tex}
+%\import{./}{importglossariesvolledig.tex}
+
+%\glsaddall
+%\printglossaries
+
+%\setglossarystyle{altlisthypergroup}
+
+%\printglossary[title=Termen,toctitle=Lijst van termen]
+
+%\clearpage
+
+%\setglossarystyle{mcolindex}
+
+\printglossary[type=\acronymtype]
+
+\printglossary
+%\printglossaries
 
 \chapter{Index}
 
