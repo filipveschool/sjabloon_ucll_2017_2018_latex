@@ -1,0 +1,81 @@
+%%
+%% This is file `kulemtx.sty',
+%% generated with the docstrip utility.
+%%
+%% The original source files were:
+%%
+%% kulemtx.dtx  (with options: `style')
+%% 
+%% This is a generated file.
+%% 
+%% Copyright (C) 2012 by Luc Van Eycken <Luc.VanEycken@esat.kuleuven.be>
+%% 
+%% This file may be distributed and/or modified under the conditions of
+%% the LaTeX Project Public License, either version 1.2 of this license
+%% or (at your option) any later version.  The latest version of this
+%% license is in:
+%% 
+%%    http://www.latex-project.org/lppl.txt
+%% 
+%% and version 1.2 or later is part of all distributions of LaTeX version
+%% 1999/12/01 or later.
+%% 
+\NeedsTeXFormat{LaTeX2e}[2001/06/01]
+%rename this package and give filename same name as package
+\ProvidesPackage{makecopyrightpage}
+    [2010/02/28 v0.1
+     Additions to the kulemt document class]
+     
+%copyright tekst voor engelse taal 
+\def\kulemt@copyright@english{\selectlanguage{english}%
+	Without written permission of the \MakeLowercase{\kulemt@paa@0} and
+	the author\kulemt@ifand\@author{s}{} it is forbidden to reproduce
+	or adapt in any form or by any means any part of this publication.
+	Requests for obtaining the right to reproduce or utilize parts of
+	this publication should be addressed to \kulemt@contact@print.\par
+	A written permission of the \MakeLowercase{\kulemt@paa@0} is also
+	required to use the methods, products, schematics and programmes
+	described in this work for industrial or commercial use, and for
+	submitting this publication in scientific contests.\par}
+
+%copyright tekst voor nederlandse taal  
+\def\kulemt@copyright@dutch{\selectlanguage{dutch}%
+	Zonder voorafgaande schriftelijke toestemming van zowel de
+	\MakeLowercase{\kulemt@paa@0} als de auteur\kulemt@ifand\@author{s}{}
+	is overnemen, kopi\"eren, gebruiken of realiseren van deze uitgave
+	of gedeelten ervan verboden. Voor aanvragen tot of informatie
+	i.v.m.\ het overnemen en/of gebruik en/of realisatie van gedeelten
+	uit deze publicatie, wend u tot \kulemt@contact@print.\par
+	Voorafgaande schriftelijke toestemming van de
+	\MakeLowercase{\kulemt@paa@0} is eveneens vereist voor het
+	aanwenden van de in deze masterproef beschreven (originele)
+	methoden, producten, schakelingen en programma's voor industrieel
+	of commercieel nut en voor de inzending van deze publicatie ter
+	deelname aan wetenschappelijke prijzen of wedstrijden.\par}
+
+%hier wordt de copyright pagina aangemaakt.
+\def\kulemt@copyrightpage{\clearpage
+	\thispagestyle{empty}% %zorgt ervoor dat er geen paginanummer te zien is op deze pagina
+	\null \vfill
+	\begingroup
+	\parindent\z@ \parskip .5\baselineskip \sloppypar
+	\copyright\space Copyright UCLL~Leuven\vskip\baselineskip
+	\expandafter\let\expandafter\@tempa
+	\csname kulemt@copyright@\kulemt@master@language\endcsname
+	\expandafter\let\expandafter\@tempb
+	\csname kulemt@copyright@\kulemt@language\endcsname
+	\ifx\@tempa\@tempb \@tempa \else
+	\ifx\@tempb\kulemt@copyright@english
+	\let\@tempb\@tempa \let\@tempa\kulemt@copyright@english \fi
+	\def\@tempc{\@tempa \vskip\baselineskip}%
+	\expandafter\@tempc\@tempb
+	\fi
+	\endgroup
+	\clearpage}
+
+%einde copyrightpagina     
+
+
+\endinput
+%%
+%% End of file `makecopyrightpage.sty'.

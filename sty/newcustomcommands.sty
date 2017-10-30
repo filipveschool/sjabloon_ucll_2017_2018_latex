@@ -1,0 +1,63 @@
+%%
+%% This is file `kulemtx.sty',
+%% generated with the docstrip utility.
+%%
+%% The original source files were:
+%%
+%% kulemtx.dtx  (with options: `style')
+%% 
+%% This is a generated file.
+%% 
+%% Copyright (C) 2012 by Luc Van Eycken <Luc.VanEycken@esat.kuleuven.be>
+%% 
+%% This file may be distributed and/or modified under the conditions of
+%% the LaTeX Project Public License, either version 1.2 of this license
+%% or (at your option) any later version.  The latest version of this
+%% license is in:
+%% 
+%%    http://www.latex-project.org/lppl.txt
+%% 
+%% and version 1.2 or later is part of all distributions of LaTeX version
+%% 1999/12/01 or later.
+%% 
+\NeedsTeXFormat{LaTeX2e}[2001/06/01]
+%rename this package and give filename same name as package
+\ProvidesPackage{newcustomcommands}
+    [2010/02/28 v0.1
+     Additions to the kulemt document class]
+     
+\newcommand{\kleurlinkstableofcontents}{blue}
+
+% Define a set of colours for syntax highlighting
+
+\definecolor{MyColor1}{rgb}{0.2,0.4,0.6} %mix personal color
+\definecolor{azure(colorwheel)}{rgb}{0.0, 0.5, 1.0}
+\newcommand{\textb}{\color{Black} \usefont{OT1}{lmss}{m}{n}}
+\newcommand{\blue}{\color{MyColor1} \usefont{OT1}{lmss}{m}{n}}
+\newcommand{\blueb}{\color{MyColor1} \usefont{OT1}{lmss}{b}{n}}
+\definecolor{purpleexcel}{rgb}{0.4392156862745,0.18823529,0.62745098039}
+\definecolor{dkgreen}{rgb}{0,.6,0}%
+\definecolor{dkblue}{rgb}{0,0,.6}%
+\definecolor{dkyellow}{cmyk}{0,0,.8,.3}%
+\definecolor{lightgray}{rgb}{0.95, 0.95, 0.95}%
+\definecolor{darkgray}{rgb}{0.4, 0.4, 0.4}%
+\definecolor{editorGray}{rgb}{0.95, 0.95, 0.95}%
+\definecolor{editorOcher}{rgb}{1, 0.5, 0}%
+\definecolor{editorGreen}{rgb}{0, 0.5, 0}%
+\definecolor{orange}{rgb}{1,0.45,0.13}%
+\definecolor{olive}{rgb}{0.17,0.59,0.20}%
+\definecolor{brown}{rgb}{0.69,0.31,0.31}%
+\definecolor{purple}{rgb}{0.38,0.18,0.81}%
+\definecolor{lightblue}{rgb}{0.1,0.57,0.7}%
+\definecolor{lightred}{rgb}{1,0.4,0.5}%
+\definecolor{ChapBlue}{rgb}{0.00,0.65,0.65}
+
+%I usually write something like this, so the entry is hyperlinked for onscreen reading but there's also a footnote to the URL for paper output.
+\newcommand\fnurl[2]{%
+	\href{#2}{#1}\footnote{\url{#2}}%
+}     
+
+
+\endinput
+%%
+%% End of file `setupkeyvalues.sty'.

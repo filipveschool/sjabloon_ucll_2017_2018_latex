@@ -1,0 +1,95 @@
+%%
+%% This is file `kulemtx.sty',
+%% generated with the docstrip utility.
+%%
+%% The original source files were:
+%%
+%% kulemtx.dtx  (with options: `style')
+%% 
+%% This is a generated file.
+%% 
+%% Copyright (C) 2012 by Luc Van Eycken <Luc.VanEycken@esat.kuleuven.be>
+%% 
+%% This file may be distributed and/or modified under the conditions of
+%% the LaTeX Project Public License, either version 1.2 of this license
+%% or (at your option) any later version.  The latest version of this
+%% license is in:
+%% 
+%%    http://www.latex-project.org/lppl.txt
+%% 
+%% and version 1.2 or later is part of all distributions of LaTeX version
+%% 1999/12/01 or later.
+%% 
+\NeedsTeXFormat{LaTeX2e}[2001/06/01]
+%rename this package and give filename same name as package
+\ProvidesPackage{makefilingcard}
+    [2010/02/28 v0.1
+     Additions to the kulemt document class]
+     
+\makepagestyle{filingcard}
+\makeheadrule{filingcard}{\textwidth}{\normalrulethickness}
+\makeevenhead{filingcard}{\kulemt@selectmasterlanguage
+	UCLL~Leuven \kulemt@fac@name}{}{\kulemt@acyear@t}
+%dit is voor de laatste pagina van fiche masterproef voor een even pagina
+\makeoddhead{filingcard}{\kulemt@selectmasterlanguage
+	UCLL~Leuven \kulemt@fac@name}{}{\kulemt@acyear@t}
+%dit is voor de laatste pagina van fiche masterproef voor een oneven pagina
+\def\kulemt@filingcard{\clearforchapter
+	\thispagestyle{filingcard}%
+	\begingroup
+	\kulemt@selectmasterlanguage
+	\begingroup
+	\centering \Large
+	\kulemt@ifdutch{Fiche masterproef}{Master's thesis filing card}%
+	\vskip 1em
+	\endgroup
+	\begingroup
+	\parskip\medskipamount
+	\@hangfrom{\textit{%
+			Student\kulemt@ifand\@author{\kulemt@ifdutch{en}s}}{}: }%
+	\@author\par
+	\@hangfrom{\textit{Tit\kulemt@ifdutch{el}{le}}: }%
+	{\kulemt@selecttextlanguage \@title}\par
+	\ifx\kulemt@translatedtitle\@empty\else
+	\@hangfrom{\textit{%
+			\kulemt@ifdutch
+			{\kulemt@selecttextlanguage
+				\kulemt@ifdutch{Engel}{Nederland}se titel}%
+			{\kulemt@selecttextlanguage
+				\kulemt@ifdutch{English}{Dutch} title}}: }%
+	\kulemt@translatedtitle\par
+	\fi
+	
+	%\noindent \textit{UDC}: \kulemt@udc\par
+	
+	\ifx\kulemt@keywords\@empty\else
+	\@hangfrom{\textit{Keywords}: }\kulemt@keywords\par
+	\fi
+	\ifx\kulemt@article@title\@empty\else
+	\@hangfrom{\textit{%
+			\kulemt@ifdutch{Titel van het artikel}{Article title}}: }%
+	\kulemt@article@title\par
+	\fi
+	\vskip\medskipamount
+	\endgroup
+	\noindent \textit{\kulemt@ifdutch{Korte inhoud}{Abstract}}:%
+	\vskip 2\p@
+	\begingroup \kulemt@selecttextlanguage
+	\noindent\ignorespaces \kulemt@shortabstract
+	\endgroup
+	\vfill \parskip\smallskipamount
+	\begingroup \raggedright
+	\noindent \kulemt@master@text \par
+	\endgroup
+	\@hangfrom{\textit{\kulemt@paa@0}: }\kulemt@teacher\par
+	%    \@hangfrom{\textit{\kulemt@paa@1}: }\kulemt@assessor\par
+	%\@hangfrom{\textit{\kulemt@paa@2}: }\kulemt@assistant\par
+	\@hangfrom{\textit{\kulemt@paa@3}: }\kulemt@company\par
+	\@hangfrom{\textit{\kulemt@paa@4}: }\kulemt@location\par
+	\endgroup
+	\clearpage}     
+
+
+\endinput
+%%
+%% End of file `setupkeyvalues.sty'.

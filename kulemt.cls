@@ -24,7 +24,9 @@
 \ProvidesClass{kulemt}
     [2017/05/30 v1.9
      KU Leuven engineering master's thesis document class]
+
 \def\kulemt@cls{kulemt}
+
 \def\kulemt@error#1{%
   \ClassError\kulemt@cls{#1}{Exit, correct this error and rerun.}}
 \def\kulemt@opt@missingpkg#1#2{\kulemt@error{%
@@ -38,7 +40,12 @@
 \def\kulemt@ifand@#1\and #2\@nil{%
   \if=\noexpand#2=\expandafter\@secondoftwo\else
     \expandafter\@firstoftwo\fi}
+
+%-------------------------------------------------------------------
+
 \RequirePackage{keyval}
+
+%-------------------------------------------------------------------
 
 \newcommand*\setup{%
   \kulemt@catcode@setup
@@ -123,7 +130,7 @@
 \kulemt@clsopt{11pt}{\def\kulemt@ptsize{1}}
 \def\kulemt@ptsize{1}
 
-%--------------------------------------------------------------
+%-------------------------------------------------------------------
 
 \kulemt@clsopt{openright}{\PassOptionsToClass{open}{memoir}}
 \kulemt@clsopt{openany}{\PassOptionsToClass{openany}{memoir}}
@@ -216,6 +223,8 @@
   \IfFileExists{lmodern.sty}{%
     \g@addto@macro\kulemt@loadfont@{%
       \renewcommand{\ttdefault}{lmtt}}}{}}
+
+%font times  
 \def\kulemt@set@font@times#1{%
   \def\kulemt@loadfont@{%
     \RequirePackage[T1]{fontenc}%
@@ -239,10 +248,9 @@
 
 %------------------------------------------------------------------------
 	
-\usepackage{setupkeyvalues}
+\usepackage{sty/setupkeyvaluesdocument}
 
 %------------------------------------------------------------------------
-
 
 \define@key{kulemt}{acyear}{\def\kulemt@acyear{#1}}
 \def\kulemt@acyear{}
@@ -253,35 +261,27 @@
     \xdef\kulemt@acyear{\the\@tempcnta\space -- \the\@tempcntb}%
   \fi
   \kulemt@acyear}
-  
-\define@key{kulemt}{translatedtitle}{\def\kulemt@translatedtitle{#1}}
-\def\kulemt@translatedtitle{%
-  \kulemt@error{No translated title available}}
-  
-\define@key{kulemt}{shortabstract}{\def\kulemt@shortabstract{#1}}
-\def\kulemt@shortabstract{%
-  \kulemt@error{No short abstract available}}
-  
-\define@key{kulemt}{udc}{\def\kulemt@udc{#1}}
-\def\kulemt@udc{%
-  \kulemt@error{UDC number missing}}
-  
-\define@key{kulemt}{keywords}{\def\kulemt@keywords{#1}}
-\def\kulemt@keywords{}
 
-\newcommand{\thekeywords}{\kulemt@keywords}
+%------------------------------------------------------------------------
 
-\define@key{kulemt}{articletitle}{\def\kulemt@article@title{#1}}
-\def\kulemt@article@title{}
+\usepackage{sty/setupkeyvaluesfilingcard}
+  
+%------------------------------------------------------------------------
 
 \kulemt@keynovalue{coverpageonly}{\kulemt@coverpagetrue}
 \newif\ifkulemt@coverpage
 
+
 \kulemt@keynovalue{frontpagesonly}{\kulemt@frontpagestrue}
 \newif\ifkulemt@frontpages
 
+
+%------------------------------------------------------------------------
+
 \kulemt@keynovalue{filingcard}{\kulemt@filingcardtrue}
 \newif\ifkulemt@filingcard
+
+%------------------------------------------------------------------------
 
 \define@key{kulemt}{bindcover}{\ClassWarningNoLine\kulemt@cls{%
     Option `bindcover' is no longer supported}}
@@ -325,7 +325,9 @@
     Facult\kulemt@ifdutch{eit Ingenieurswetenschappen}%
                          {y of Engineering}%
   \fi}
-%-------------------------------------------------------------------------------------------------
+
+%---------------------------------------------------------------------------------------------------
+
 %hier wordt logo ingeladen
 
 \def\kulemt@kulfac@logo#1{%
@@ -340,7 +342,7 @@
  \expandafter\includegraphics\@tempa}
 %\def\kulemt@fac@logo#1{}
  
-%-------------------------------------------------------------------------------------------------
+%---------------------------------------------------------------------------------------------------
  
 \def\kulemt@fac@copyright{%
   \ifnum\kulemt@facnum >\@ne
@@ -350,6 +352,7 @@
     B-3001 Heverlee:+32-16-321350:%
   \fi}
 
+%---------------------------------------------------------------------------------------------------
 
 \def\kulemt@paa@#1{%
   \ifcase #1%
@@ -365,7 +368,8 @@
   	\kulemt@ifand\kulemt@assistant{s}{}%
   \fi}
   
-%-------------------------------------------------------------------------------------------------
+%---------------------------------------------------------------------------------------------------
+
 %hier wordt de configuration file ingeladen
 
 \providecommand*\kulemt@cfgfile{kulemt.cfg}
@@ -374,7 +378,7 @@
       Configuration file `\kulemt@cfgfile' is not installed}}
 \fi
 
-%-------------------------------------------------------------------------------------------------
+%---------------------------------------------------------------------------------------------------
 
 \kulemt@process@ptions
 \ifx\kulemt@opt@master\@empty
@@ -404,14 +408,16 @@
   \fi
 \fi
 
-%-------------------------------------------------------------------------------------------------
+%---------------------------------------------------------------------------------------------------
+
 %hier wordt de memoir klasse ingeladen
 
 \LoadClass[a4paper,1\kulemt@ptsize pt]{memoir}[2004/04/05]
 \def\and{\\}
 \let\andnext\and
 
-%-------------------------------------------------------------------------------------------------
+%---------------------------------------------------------------------------------------------------
+
 %hier wordt de talen package ingeladen
 
 \RequirePackage[\kulemt@babel@opt]{babel}
@@ -426,6 +432,7 @@
   \def\partrefname{Part~}%
   \def\chapterrefname{Chapter~}%
   \def\listfiguresandtablesname{List of Figures and Tables}}
+
 \begingroup
   \catcode`\"\active
   \@firstofone{\endgroup
@@ -442,15 +449,23 @@
   \ifx\cf@encoding\latinencoding\else \xdef\latinencoding{OT1}\fi}
 \edef\kulemt@language{\kulemt@language}
 \expandafter\main@language\expandafter{\kulemt@language}
+
 \def\kulemt@selectmasterlanguage{%
   \expandafter\selectlanguage\expandafter{\kulemt@master@language}}
+
 \def\kulemt@selecttextlanguage{%
   \expandafter\selectlanguage\expandafter{\kulemt@language}}
   
-%-------------------------------------------------------------------------------------------------
+%---------------------------------------------------------------------------------------------------
   
 \RequirePackage{graphicx}
+
+%---------------------------------------------------------------------------------------------------
+
 \RequirePackage{color}
+
+%---------------------------------------------------------------------------------------------------
+
 \def\kulemt@loadmt{%
   \@ifpackageloaded{microtype}{}{\RequirePackage{microtype}}}
 \AtBeginDocument{\kulemt@loadmt}
@@ -473,7 +488,7 @@
     \@tempa}%
 \fi
 
-%-------------------------------------------------------------------------------------------------
+%---------------------------------------------------------------------------------------------------
 
 \def\kulemt@check@hyperref{%
   \@ifpackageloaded{hyperref}{%
@@ -487,11 +502,11 @@
     \providecommand*\theHsubtable{\theHtable.\arabic{subtable}}%
   }{}}
 
-%-------------------------------------------------------------------------------------------------
+%---------------------------------------------------------------------------------------------------
   
 \AtBeginDocument{\kulemt@check@hyperref}
 
-%-------------------------------------------------------------------------------------------------
+%---------------------------------------------------------------------------------------------------
 
 %A4 papier ==> 210mm width x 297 mm height ofwel 21x29cm widthxheight
 %A4 papier ==> 8.3in x 11.7 in
@@ -544,7 +559,7 @@
     \clearpage
   \fi}
   
-%------------------------------------------------------------------
+%---------------------------------------------------------------------------------------------------
 
 %\makeoddhead{ruled}{}{}{%
   %\if@mainmatter \rightmark \else \scshape\leftmark \fi}
@@ -639,8 +654,6 @@
 \makefootrule{chapternohead}{\textwidth}{0.5pt}{0pt}
 
 \makepagestyle{filip}
-%\makeevenhead{filip}{left}{center}{right}
-%\makeoddhead{filip}{left}{center}{right}
 \makeevenfoot{filip}{Pagina \thepage \hspace{1pt} van \thelastpage}{}{Filip Vanden Eynde~\copyright~2017}
 \makeoddfoot{filip}{Filip Vanden Eynde~\copyright~2017}{}{Pagina \thepage \hspace{1pt} van \thelastpage}
 %\makeheadrule{filip}{width}{thickness} %To add lines for the header
@@ -683,6 +696,7 @@
 
 
 %-------------------------------------------------------------------------------------------------
+
 \newcommand*\listoffiguresandtables{%
   \chapter\listfiguresandtablesname
   \def\@lofmaketitle{\section*\listfigurename}%
@@ -724,7 +738,7 @@
 \def\kulemt@fpf@banner{\fontsize\@xivpt{18}%
   \fontseries\bfdefault\selectfont}
 
-%-------------------------------------------------------------------------------------------------
+%---------------------------------------------------------------------------------------------------
 %tekst op voorpagina
 \def\kulemt@master@text{
 	Thesis
@@ -759,7 +773,7 @@
 	
 }
   
-%-------------------------------------------------------------------------------------------------
+%---------------------------------------------------------------------------------------------------
 
 % Hier wordt alles bepaalt voor gegevens en tonen op beeld met dubbelpunt enz
 
@@ -791,241 +805,18 @@
       \endgroup \@tempa \par
     \fi
   \endgroup}
-  
-%%dit is de voorpagina  
-\def\kulemt@frontpage{\clearpage
-  \setcounter{page}\m@ne
-  \thispagestyle{empty}%
-   %%zorgt ervoor dat er geen paginanummer te zien is.
-  \@tempdima\uppermargin \advance\@tempdima\topskip
-  %%schuift de margin naar boven
-  \advance\@tempdima\baselineskip \advance\@tempdima -1cm%
-  %\advance\@tempdima\baselineskip \advance\@tempdima -2cm%
-  
-  \null \vskip -\@tempdima
-%% The margins are 16\,mm, resulting in a text width of 178\,mm on A4 paper.
-  \hbox to\hsize{%
-  %originele lijn
-    \@tempdima 2cm\advance\@tempdima -\spinemargin \hskip\@tempdima
-	
-	%%zorgt voor de zijwaartse marge
-    \vbox to\z@{\hsize 17cm\relax
-      \lineskip\z@skip \parskip\z@skip
-      \@ifundefined{microtypesetup}{}{\microtypesetup{activate=false}}%
-      \fontencoding{T1}\fontfamily{kulemtfpf}\kulemt@fpf@text
-      \raggedright \kulemt@selectmasterlanguage
-      \noindent \hskip-1cm%
-	  %originele lijn
-      %\vbox to3cm{\hbox{\kulemt@kulfac@logo{width=56mm}}\vss}\hfill
-	  \vbox to3cm{\hbox{\kulemt@kulfac@logo{width=76mm}}\vss}\hfill
-      \vbox to3cm{\hbox{\kulemt@fac@logo{height=2cm}}\vss}%
-      \hskip-1cm\hskip\z@skip
-      \vskip 40\p@ \@plus 2fill\relax
-      \begingroup \kulemt@selecttextlanguage
-       % Dit toont de titel dat je bij setup plaatst
-		% originele lijn
-        \kulemt@fpf@title \@title \par
-        %\centering \kulemt@fpf@title \@title \par
-		%\centering \textbf{\kulemt@fpf@title \@title} \par
-        \ifx\kulemt@subtitle\@empty\else
-          \vskip 1em\relax
-          \kulemt@fpf@subtitle \kulemt@subtitle \par
-        \fi
-      \endgroup
-	  
-      %Dit zorgt voor de witruimte tussen de titel en auteur gegevens
-      %originele lijn
-		\vskip 40\p@ \@plus .3fill%
-	  
-	  % Dit toont de author gegevens dus mijn naam
-      \begingroup \kulemt@fpf@author \@author
-	  % Dit zorgt voor de witruimte tussen auteur gegevens en beschrijving
-	  %originele lijn
-        \vskip 30\p@ \@plus 1fill\endgroup
-		 
-	  %originele lijn		 
-      \noindent \hfill \vbox{\hsize .5\textwidth \raggedleft
-	 
-		%origineel
-		%\kulemt@master@text \par
-         \kulemt@master@textthree \par	
-		% Dit toont de teacher/stagebegeleider gegevens
-        \kulemt@paa@fp0%
-        % stagementor
-       %\kulemt@paa@fp1%
-        % bedrijf
-        %\kulemt@paa@fp2%
-        % locatie
-        %\kulemt@paa@fp3%
-		
-        \ifkulemt@coverpage\else
-         % assessor
-%          \kulemt@paa@fp1%
-          % begeleider
-%          \kulemt@paa@fp2%
-		  \kulemt@paa@fp3%
-		  \kulemt@paa@fp4%
-				
-        \fi}%
-	% Dit zorgt voor de witruimte tussen beschrijving soort diploma en academiejaar	
-      %originele lijn
-	  \vskip 20\p@ \@plus 2fill\relax
-	  % \vskip 20\p@
-	  
-	   % allemaal nieuw stuff
-	   %Dit toont kul logo
-        %\vbox to3cm{\hbox{\kulemt@kulfac2@logo{width=76mm}}\vss}\hfill
-	    %\centering \vbox {\kulemt@kulfac2@logo{width=66mm}\vss}\hfill
-    %\centering \vbox {\kulemt@kulfac2@logo{width=76mm}\vss}\hfill
-	  %end allemaal nieuw stuff
-	  
-	  % Dit zorgt voor het academiejaar weergave
-      \centering \kulemt@fpf@banner
-      \textmd{Academi\kulemt@ifdutch{ejaar}{c year} \kulemt@acyear@t}%
-      \vskip 15\p@
-      \ifkulemt@coverpage
-        \ifx\kulemt@master@colors\@empty\else
-          \vskip 15\p@
-          \centerline{\fboxsep\z@
-            \expandafter\kulemt@getcolors\kulemt@master@colors::\@nil
-            \expandafter\colorbox\kulemt@color@bg{%
-              \vbox to 15mm{\hsize 19cm\vss
-                \expandafter\textcolor\kulemt@color@fg{%
-                  \kulemt@master@title}\vss}}}%
-        \fi
-      \fi
-      \vskip -277mm}%
-    \hss}%
-  \clearpage}
-  
-% gedaan met voorpagina, naar nieuwe lege pagina met clearpage commando
 
+%---------------------------------------------------------------------------------------------------
+  
+\usepackage{sty/frontpage}
 
-%--------------------------
+%---------------------------------------------------------------------------------------------------
 
-%%dit is de voorpagina  
-\def\kulemt@frontpagetwo{\clearpage
-	\setcounter{page}\m@ne
-	\thispagestyle{empty}%
-	%%zorgt ervoor dat er geen paginanummer te zien is.
-	\@tempdima\uppermargin \advance\@tempdima\topskip
-	%%schuift de margin naar boven
-	%\advance\@tempdima\baselineskip \advance\@tempdima -1cm%
-	\advance\@tempdima\baselineskip \advance\@tempdima -2cm%
-	
-	\null \vskip -\@tempdima
-	%% The margins are 16\,mm, resulting in a text width of 178\,mm on A4 paper.
-	\hbox to\hsize{%
-		%originele lijn
-		%\@tempdima 2cm\advance\@tempdima -\spinemargin \hskip\@tempdima
-		\@tempdima 3cm\advance\@tempdima -\spinemargin \hskip\@tempdima %
-		
-		%%zorgt voor de zijwaartse marge
-		\vbox to\z@{\hsize 17cm\relax
-			\lineskip\z@skip \parskip\z@skip
-			\@ifundefined{microtypesetup}{}{\microtypesetup{activate=false}}%
-			\fontencoding{T1}\fontfamily{kulemtfpf}\kulemt@fpf@text
-			\raggedright \kulemt@selectmasterlanguage
-			\noindent \hskip-1cm%
-			%originele lijn
-			%\vbox to3cm{\hbox{\kulemt@kulfac@logo{width=56mm}}\vss}\hfill
-			\vbox to3cm{\hbox{\kulemt@kulfac@logo{width=76mm}}\vss}\hfill
-			\vbox to3cm{\hbox{\kulemt@fac@logo{height=2cm}}\vss}%
-			\hskip-1cm\hskip\z@skip
-			\vskip 40\p@ \@plus 2fill\relax
-			\begingroup \kulemt@selecttextlanguage
-			% Dit toont de titel dat je bij setup plaatst
-			% originele lijn
-			%\kulemt@fpf@title \@title \par
-			\centering \textbf{\kulemt@fpf@title \@title} \par
-			\ifx\kulemt@subtitle\@empty\else
-			\vskip 1em\relax
-			\kulemt@fpf@subtitle \kulemt@subtitle \par
-			\fi
-			\endgroup
-			
-			% allemaal nieuw stuff
-			\vspace*{\fill}
-			%end allemaal nieuw stuff
-			
-			%Dit zorgt voor de witruimte tussen de titel en auteur gegevens
-			%originele lijn
-			%\vskip 40\p@ \@plus .3fill%
-			\vskip 40\p@ \@plus .3fill% \\[5mm]
-			
-			% Dit toont de author gegevens dus mijn naam
-			\begingroup \kulemt@fpf@author \@author
-			% Dit zorgt voor de witruimte tussen auteur gegevens en beschrijving
-			%originele lijn
-			%\vskip 30\p@ \@plus 1fill\endgroup
-			% \p@ is een internal definition of a point
-			%\vskip 40\p@ \@plus .3fill \endgroup
-			%\vskip 30\p@ \@plus 1fill 
-			\vskip 20\p@
-			\endgroup
-			
-			%originele lijn		 
-			%\noindent \hfill \vbox{\hsize .5\textwidth \raggedleft
-			\noindent \vbox{ \raggedright
-				
-				%allemaal new stuff
-				\vskip 20\p@ \@plus 2fill\relax
-				\textmd{\textbf{Academiejaar \kulemt@acyear@t}} \par
-				% \vskip 20\p@ \@plus 2fill\relax
-				\vskip 10\p@ \@plus 2fill\relax
-				%end allemaal new stuff	 
-				
-				
-				\kulemt@master@text \par		
-				% Dit toont de teacher/stagebegeleider gegevens
-				\kulemt@paa@fp0%
-				% stagementor
-				%\kulemt@paa@fp1%
-				% bedrijf
-				%\kulemt@paa@fp2%
-				% locatie
-				%\kulemt@paa@fp3%
-				
-				\ifkulemt@coverpage\else
-				\kulemt@paa@fp1%
-				\kulemt@paa@fp2%
-				\kulemt@paa@fp3%
-				\kulemt@paa@fp4%
-				\fi}%
-			% Dit zorgt voor de witruimte tussen beschrijving soort diploma en academiejaar	
-			%originele lijn
-			%\vskip 20\p@ \@plus 2fill\relax
-			\vskip 20\p@
-			
-			% allemaal nieuw stuff
-			%Dit toont kul logo
-			% \vbox to3cm{\hbox{\kulemt@kulfac2@logo{width=76mm}}\vss}\hfill
-			\centering \vbox {\kulemt@kulfac2@logo{width=66mm}\vss}\hfill
-			%\centering \vbox {\kulemt@kulfac2@logo{width=76mm}\vss}\hfill
-			%end allemaal nieuw stuff
-			
-			% Dit zorgt voor het academiejaar weergave
-			\centering \kulemt@fpf@banner
-			\textmd{Academi\kulemt@ifdutch{ejaar}{c year} \kulemt@acyear@t}%
-			\vskip 15\p@
-			\ifkulemt@coverpage
-			\ifx\kulemt@master@colors\@empty\else
-			\vskip 15\p@
-			\centerline{\fboxsep\z@
-				\expandafter\kulemt@getcolors\kulemt@master@colors::\@nil
-				\expandafter\colorbox\kulemt@color@bg{%
-					\vbox to 15mm{\hsize 19cm\vss
-						\expandafter\textcolor\kulemt@color@fg{%
-							\kulemt@master@title}\vss}}}%
-			\fi
-			\fi
-			\vskip -277mm}%
-		\hss}%
-	\clearpage}
+\usepackage{sty/frontpagetwo}
 
 % gedaan met voorpagina, naar nieuwe lege pagina met clearpage commando
 
-%--------------------------
+%---------------------------------------------------------------------------------------------------
 
 \let\maketitle\relax
 \def\kulemt@contact@print{%
@@ -1040,120 +831,18 @@
       \space o\kulemt@ifdutch{f via e-}{r by e}mail \texttt{#3}%
     \fi
   \fi}
- 
-	%copyright tekst voor engelse taal 
-\def\kulemt@copyright@english{\selectlanguage{english}%
-  Without written permission of the \MakeLowercase{\kulemt@paa@0} and
-  the author\kulemt@ifand\@author{s}{} it is forbidden to reproduce
-  or adapt in any form or by any means any part of this publication.
-  Requests for obtaining the right to reproduce or utilize parts of
-  this publication should be addressed to \kulemt@contact@print.\par
-  A written permission of the \MakeLowercase{\kulemt@paa@0} is also
-  required to use the methods, products, schematics and programmes
-  described in this work for industrial or commercial use, and for
-  submitting this publication in scientific contests.\par}
-  
-	%copyright tekst voor nederlandse taal  
-\def\kulemt@copyright@dutch{\selectlanguage{dutch}%
-  Zonder voorafgaande schriftelijke toestemming van zowel de
-  \MakeLowercase{\kulemt@paa@0} als de auteur\kulemt@ifand\@author{s}{}
-  is overnemen, kopi\"eren, gebruiken of realiseren van deze uitgave
-  of gedeelten ervan verboden. Voor aanvragen tot of informatie
-  i.v.m.\ het overnemen en/of gebruik en/of realisatie van gedeelten
-  uit deze publicatie, wend u tot \kulemt@contact@print.\par
-  Voorafgaande schriftelijke toestemming van de
-  \MakeLowercase{\kulemt@paa@0} is eveneens vereist voor het
-  aanwenden van de in deze masterproef beschreven (originele)
-  methoden, producten, schakelingen en programma's voor industrieel
-  of commercieel nut en voor de inzending van deze publicatie ter
-  deelname aan wetenschappelijke prijzen of wedstrijden.\par}
-  
-%hier wordt de copyright pagina aangemaakt.
-\def\kulemt@copyrightpage{\clearpage
-  \thispagestyle{empty}% %zorgt ervoor dat er geen paginanummer te zien is op deze pagina
-  \null \vfill
-  \begingroup
-    \parindent\z@ \parskip .5\baselineskip \sloppypar
-    \copyright\space Copyright UCLL~Leuven\vskip\baselineskip
-    \expandafter\let\expandafter\@tempa
-      \csname kulemt@copyright@\kulemt@master@language\endcsname
-    \expandafter\let\expandafter\@tempb
-      \csname kulemt@copyright@\kulemt@language\endcsname
-    \ifx\@tempa\@tempb \@tempa \else
-      \ifx\@tempb\kulemt@copyright@english
-        \let\@tempb\@tempa \let\@tempa\kulemt@copyright@english \fi
-      \def\@tempc{\@tempa \vskip\baselineskip}%
-      \expandafter\@tempc\@tempb
-    \fi
-  \endgroup
-  \clearpage}
-  
-%einde copyrightpagina
+
+%---------------------------------------------------------------------------------------------------
+
+\usepackage{sty/makecopyrightpage}
+
+%---------------------------------------------------------------------------------------------------
   
 %laatste pagina fiche pagina
-  
-\makepagestyle{filingcard}
-\makeheadrule{filingcard}{\textwidth}{\normalrulethickness}
-\makeevenhead{filingcard}{\kulemt@selectmasterlanguage
-  UCLL~Leuven \kulemt@fac@name}{}{\kulemt@acyear@t}
-  %dit is voor de laatste pagina van fiche masterproef voor een even pagina
-\makeoddhead{filingcard}{\kulemt@selectmasterlanguage
-  UCLL~Leuven \kulemt@fac@name}{}{\kulemt@acyear@t}
-   %dit is voor de laatste pagina van fiche masterproef voor een oneven pagina
-\def\kulemt@filingcard{\clearforchapter
-  \thispagestyle{filingcard}%
-  \begingroup
-    \kulemt@selectmasterlanguage
-    \begingroup
-      \centering \Large
-      \kulemt@ifdutch{Fiche masterproef}{Master's thesis filing card}%
-      \vskip 1em
-    \endgroup
-    \begingroup
-      \parskip\medskipamount
-      \@hangfrom{\textit{%
-          Student\kulemt@ifand\@author{\kulemt@ifdutch{en}s}}{}: }%
-        \@author\par
-      \@hangfrom{\textit{Tit\kulemt@ifdutch{el}{le}}: }%
-        {\kulemt@selecttextlanguage \@title}\par
-      \ifx\kulemt@translatedtitle\@empty\else
-        \@hangfrom{\textit{%
-            \kulemt@ifdutch
-             {\kulemt@selecttextlanguage
-              \kulemt@ifdutch{Engel}{Nederland}se titel}%
-             {\kulemt@selecttextlanguage
-              \kulemt@ifdutch{English}{Dutch} title}}: }%
-        \kulemt@translatedtitle\par
-      \fi
-     
-	  %\noindent \textit{UDC}: \kulemt@udc\par
-	  
-      \ifx\kulemt@keywords\@empty\else
-        \@hangfrom{\textit{Keywords}: }\kulemt@keywords\par
-      \fi
-      \ifx\kulemt@article@title\@empty\else
-        \@hangfrom{\textit{%
-            \kulemt@ifdutch{Titel van het artikel}{Article title}}: }%
-          \kulemt@article@title\par
-      \fi
-      \vskip\medskipamount
-    \endgroup
-    \noindent \textit{\kulemt@ifdutch{Korte inhoud}{Abstract}}:%
-    \vskip 2\p@
-    \begingroup \kulemt@selecttextlanguage
-      \noindent\ignorespaces \kulemt@shortabstract
-    \endgroup
-    \vfill \parskip\smallskipamount
-    \begingroup \raggedright
-      \noindent \kulemt@master@text \par
-    \endgroup
-    \@hangfrom{\textit{\kulemt@paa@0}: }\kulemt@teacher\par
-%    \@hangfrom{\textit{\kulemt@paa@1}: }\kulemt@assessor\par
-    %\@hangfrom{\textit{\kulemt@paa@2}: }\kulemt@assistant\par
-	\@hangfrom{\textit{\kulemt@paa@3}: }\kulemt@company\par
-    \@hangfrom{\textit{\kulemt@paa@4}: }\kulemt@location\par
-  \endgroup
-  \clearpage}
+
+\usepackage{sty/makefilingcard}
+
+%---------------------------------------------------------------------------------------------------
 
 \g@addto@macro\document{\kulemt@frontpage
 %	\g@addto@macro\document{\kulemt@frontpagetwo
@@ -1162,7 +851,7 @@
   \else
     \kulemt@copyrightpage
     \ifkulemt@frontpages
-      \def\@tempa{\end{document}}%
+	    \def\@tempa{\end{document}}%
     \else
       \let\@tempa\frontmatter
     \fi
@@ -1173,6 +862,7 @@
 \expandafter\def\expandafter\mainmatter\expandafter{%
   \expandafter\let\expandafter\kulemt@error@mm\expandafter\relax
   \mainmatter}
+
 \AtEndDocument{%
   \ifkulemt@coverpage\else
    % hier schakel je de fiche portfolio uit.
@@ -1183,7 +873,7 @@
    % \fi
   \fi}
   
-%-------------------------------------------------------------------------------
+%---------------------------------------------------------------------------------------------------
 
 \newenvironment{preface}[1][\@author]%
  {\chapter\prefacename
@@ -1193,6 +883,7 @@
     \bigskip \raggedleft \itshape \kulemt@preface@
   \fi
   \vfill \clearpage}
+
 \renewenvironment{abstract}%
  {\chapter\abstractname}%
  {\clearpage}
@@ -1201,7 +892,7 @@
   \abstract}%
  {\endabstract}
  
-%-------------------------------------------------------------------------------
+%---------------------------------------------------------------------------------------------------
  
 \endinput
 %%

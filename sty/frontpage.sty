@@ -1,0 +1,139 @@
+%%
+%% This is file `kulemtx.sty',
+%% generated with the docstrip utility.
+%%
+%% The original source files were:
+%%
+%% kulemtx.dtx  (with options: `style')
+%% 
+%% This is a generated file.
+%% 
+%% Copyright (C) 2012 by Luc Van Eycken <Luc.VanEycken@esat.kuleuven.be>
+%% 
+%% This file may be distributed and/or modified under the conditions of
+%% the LaTeX Project Public License, either version 1.2 of this license
+%% or (at your option) any later version.  The latest version of this
+%% license is in:
+%% 
+%%    http://www.latex-project.org/lppl.txt
+%% 
+%% and version 1.2 or later is part of all distributions of LaTeX version
+%% 1999/12/01 or later.
+%% 
+\NeedsTeXFormat{LaTeX2e}[2001/06/01]
+%rename this package and give filename same name as package
+\ProvidesPackage{frontpage}
+    [2010/02/28 v0.1
+     Additions to the kulemt document class]
+     
+%%dit is de voorpagina  
+\def\kulemt@frontpage{\clearpage
+	\setcounter{page}\m@ne
+	\thispagestyle{empty}%
+	%%zorgt ervoor dat er geen paginanummer te zien is.
+	\@tempdima\uppermargin \advance\@tempdima\topskip
+	%%schuift de margin naar boven
+	\advance\@tempdima\baselineskip \advance\@tempdima -1cm%
+	%\advance\@tempdima\baselineskip \advance\@tempdima -2cm%
+	
+	\null \vskip -\@tempdima
+	%% The margins are 16\,mm, resulting in a text width of 178\,mm on A4 paper.
+	\hbox to\hsize{%
+		%originele lijn
+		\@tempdima 2cm\advance\@tempdima -\spinemargin \hskip\@tempdima
+		
+		%%zorgt voor de zijwaartse marge
+		\vbox to\z@{\hsize 17cm\relax
+			\lineskip\z@skip \parskip\z@skip
+			\@ifundefined{microtypesetup}{}{\microtypesetup{activate=false}}%
+			\fontencoding{T1}\fontfamily{kulemtfpf}\kulemt@fpf@text
+			\raggedright \kulemt@selectmasterlanguage
+			\noindent \hskip-1cm%
+			%originele lijn
+			%\vbox to3cm{\hbox{\kulemt@kulfac@logo{width=56mm}}\vss}\hfill
+			\vbox to3cm{\hbox{\kulemt@kulfac@logo{width=76mm}}\vss}\hfill
+			\vbox to3cm{\hbox{\kulemt@fac@logo{height=2cm}}\vss}%
+			\hskip-1cm\hskip\z@skip
+			\vskip 40\p@ \@plus 2fill\relax
+			\begingroup \kulemt@selecttextlanguage
+			% Dit toont de titel dat je bij setup plaatst
+			% originele lijn
+			\kulemt@fpf@title \@title \par
+			%\centering \kulemt@fpf@title \@title \par
+			%\centering \textbf{\kulemt@fpf@title \@title} \par
+			\ifx\kulemt@subtitle\@empty\else
+			\vskip 1em\relax
+			\kulemt@fpf@subtitle \kulemt@subtitle \par
+			\fi
+			\endgroup
+			
+			%Dit zorgt voor de witruimte tussen de titel en auteur gegevens
+			%originele lijn
+			\vskip 40\p@ \@plus .3fill%
+			
+			% Dit toont de author gegevens dus mijn naam
+			\begingroup \kulemt@fpf@author \@author
+			% Dit zorgt voor de witruimte tussen auteur gegevens en beschrijving
+			%originele lijn
+			\vskip 30\p@ \@plus 1fill\endgroup
+			
+			%originele lijn		 
+			\noindent \hfill \vbox{\hsize .5\textwidth \raggedleft
+				
+				%origineel
+				%\kulemt@master@text \par
+				\kulemt@master@textthree \par	
+				% Dit toont de teacher/stagebegeleider gegevens
+				\kulemt@paa@fp0%
+				% stagementor
+				%\kulemt@paa@fp1%
+				% bedrijf
+				%\kulemt@paa@fp2%
+				% locatie
+				%\kulemt@paa@fp3%
+				
+				\ifkulemt@coverpage\else
+				% assessor
+				%          \kulemt@paa@fp1%
+				% begeleider
+				%          \kulemt@paa@fp2%
+				\kulemt@paa@fp3%
+				\kulemt@paa@fp4%
+				
+				\fi}%
+			% Dit zorgt voor de witruimte tussen beschrijving soort diploma en academiejaar	
+			%originele lijn
+			\vskip 20\p@ \@plus 2fill\relax
+			% \vskip 20\p@
+			
+			% allemaal nieuw stuff
+			%Dit toont kul logo
+			%\vbox to3cm{\hbox{\kulemt@kulfac2@logo{width=76mm}}\vss}\hfill
+			%\centering \vbox {\kulemt@kulfac2@logo{width=66mm}\vss}\hfill
+			%\centering \vbox {\kulemt@kulfac2@logo{width=76mm}\vss}\hfill
+			%end allemaal nieuw stuff
+			
+			% Dit zorgt voor het academiejaar weergave
+			\centering \kulemt@fpf@banner
+			\textmd{Academi\kulemt@ifdutch{ejaar}{c year} \kulemt@acyear@t}%
+			\vskip 15\p@
+			\ifkulemt@coverpage
+			\ifx\kulemt@master@colors\@empty\else
+			\vskip 15\p@
+			\centerline{\fboxsep\z@
+				\expandafter\kulemt@getcolors\kulemt@master@colors::\@nil
+				\expandafter\colorbox\kulemt@color@bg{%
+					\vbox to 15mm{\hsize 19cm\vss
+						\expandafter\textcolor\kulemt@color@fg{%
+							\kulemt@master@title}\vss}}}%
+			\fi
+			\fi
+			\vskip -277mm}%
+		\hss}%
+	\clearpage}
+     
+
+
+\endinput
+%%
+%% End of file `frontpage.sty'.
