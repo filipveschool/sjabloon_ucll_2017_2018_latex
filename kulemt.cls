@@ -357,15 +357,15 @@
 \def\kulemt@paa@#1{%
   \ifcase #1%
     Teacher\kulemt@ifand\kulemt@teacher{\kulemt@ifdutch{en}{ers}}{}%
-  \or
-  	Assessor\kulemt@ifand\kulemt@assessor{\kulemt@ifdutch{en}s}{}%
+%  \or
+%  	Assessor\kulemt@ifand\kulemt@assessor{\kulemt@ifdutch{en}s}{}%
   \or
   	Bedrij\kulemt@ifand\kulemt@company{\kulemt@ifdutch{oren}{ers}}{}%
   \or
   	Locatie\kulemt@ifand\kulemt@location{s}{}%  
-  \or
-  	\kulemt@ifdutch{Begeleider}{Assistant}%
-  	\kulemt@ifand\kulemt@assistant{s}{}%
+%  \or
+%  	\kulemt@ifdutch{Begeleider}{Assistant}%
+%  	\kulemt@ifand\kulemt@assistant{s}{}%
   \fi}
   
 %---------------------------------------------------------------------------------------------------
@@ -789,14 +789,14 @@
     \ifcase #1\relax
 	  % Dit haalt de data uit de setup gegevens
       \let\@tempa\kulemt@teacher
-    \or
-    	\let\@tempa\kulemt@assessor
-    \or
-    	\let\@tempa\kulemt@assistant
+%    \or
+%    	\let\@tempa\kulemt@assessor
+%    \or
+%    	\let\@tempa\kulemt@assistant
 	\or
-    	\let\@tempa\kulemt@company
+		\let\@tempa\kulemt@location
     \or
-    	\let\@tempa\kulemt@location
+    	\let\@tempa\kulemt@company
  	\else
 	    \let\@tempa\@empty
     \fi
