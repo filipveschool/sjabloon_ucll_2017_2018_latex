@@ -239,40 +239,9 @@
 
 %------------------------------------------------------------------------
 	
-\define@key{kulemt}{title}{\title{#1}}
-\def\@title{\kulemt@error{No title given}}
+\usepackage{setupkeyvalues}
 
-\newcommand{\thetitle}{\@title}
-
-\define@key{kulemt}{subtitle}{\def\kulemt@subtitle{#1}}
-\def\kulemt@subtitle{}
-
-\define@key{kulemt}{author}{\author{#1}}
-\def\@author{\kulemt@error{No author given}}
-
-\newcommand{\theauthor}{\@author}
-
-\newcommand{\thesubject}{\@title}
-	
-\define@key{kulemt}{teacher}{%
-  \def\@tempa{#1}\ifx\@tempa\@empty\else \def\kulemt@teacher{#1}\fi}
-\let\KV@kulemt@teacher\KV@kulemt@teacher
-\def\kulemt@teacher{\kulemt@error{No teacher given}}
-
-\define@key{kulemt}{assessor}{\def\kulemt@assessor{#1}}
-\def\kulemt@assessor{\kulemt@error{No assessor given}}
-
-\define@key{kulemt}{assistant}{\def\kulemt@assistant{#1}}
-\def\kulemt@assistant{\kulemt@error{No assistant given}}
-
-\define@key{kulemt}{company}{\def\kulemt@company{#1}}
-\def\kulemt@company{\kulemt@error{No company given}}
-
-\define@key{kulemt}{location}{\def\kulemt@location{#1}}
-\def\kulemt@location{\kulemt@error{No location given}}
-
-\define@key{kulemt}{textsubject}{\def\kulemt@textsubject{#1}}
-\def\kulemt@textsubject{\kulemt@error{No textsubject given}}
+%------------------------------------------------------------------------
 
 
 \define@key{kulemt}{acyear}{\def\kulemt@acyear{#1}}
